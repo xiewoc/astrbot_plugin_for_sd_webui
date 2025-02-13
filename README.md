@@ -1,8 +1,10 @@
-# helloworld
+# astrbot_plugin_for_sd_webui
 
-AstrBot 插件模板
+Astrbot的sdwebui功能，使用/draw为唤醒命令
 
-A template plugin for AstrBot plugin feature
+# 使用
+
+eg. /draw a_dog
 
 # 支持
 

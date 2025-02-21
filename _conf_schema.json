@@ -1,0 +1,60 @@
+{
+    "api_address": {
+        "description": "sd_webui 的api地址",
+        "type": "string",
+        "default": "http://127.0.0.1:7860"
+    },
+    "sub_config": {
+        "description": "杂项",
+        "type": "object",
+        "items": {
+            "model": {
+                "description": "模型名称",
+                "type": "string",
+                "hint": "模型名称"
+            },
+            "sampler": {
+                "description": "采样器名称",
+                "type": "string",
+                "hint": "采样器名称",
+                "default": "Euler a"
+            },
+            "negtive_prompt": {
+                "description": "反面提示词",
+                "type": "string",
+                "hint": "反面提示词",
+                "default": "(worst quality:2), (low quality:2), (normal quality:2), lowres, ((monochrome)), ((grayscale)), bad anatomy,DeepNegative, skin spots, acnes, skin blemishes,(fat:1.2),facing away, looking away,tilted head, lowres,bad anatomy,bad hands, missing fingers,extra digit, fewer digits,bad feet,poorly drawn hands,poorly drawn face,mutation,deformed,extra fingers,extra limbs,extra arms,extra legs,malformed limbs,fused fingers,too many fingers,long neck,cross-eyed,mutated hands,polar lowres,bad body,bad proportions,gross proportions,missing arms,missing legs,extra digit, extra arms, extra leg, extra foot,teethcroppe,signature, watermark, username,blurry,cropped,jpeg artifacts,text,error,"
+            },
+            "CLIP": {
+                "description": "CLIP跳过层",
+                "type": "int",
+                "hint": "CLIP跳过层，2为最佳",
+                "default": 2
+            },
+            "seed": {
+                "description": "生图种子",
+                "type": "int",
+                "hint": "生图种子，-1为随机",
+                "default": -1
+            },
+            "width": {
+                "description": "宽度",
+                "type": "int",
+                "hint": "生图宽度，默认512",
+                "default": 512
+            },
+            "height": {
+                "description": "高度",
+                "type": "int",
+                "hint": "生图高度，默认512",
+                "default": 512
+            },
+            "step": {
+                "description": "推理次数",
+                "type": "int",
+                "hint": "模型推理次数，28为最佳",
+                "default": 28
+            }
+        }
+    }
+}

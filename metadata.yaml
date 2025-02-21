@@ -1,6 +1,6 @@
 name: astrbot_plugin_for_sd_webui
 desc: 用于使用sd webui进行画图。 
 help: 输入 /draw xxx进行画图 
-version: v0.0.1 
+version: v1.0.0 
 author: xiewoc 
 repo: https://github.com/xiewoc/astrbot_plugin_for_sd_webui

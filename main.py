@@ -54,7 +54,6 @@ class astrbot_plugin_for_sd_webui(Star):
     def __init__(self, context: Context, config: dict):
         super().__init__(context)
         self.config = config
-        print(self.config)
 
         # 获取顶级配置
         global url

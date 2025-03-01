@@ -7,6 +7,7 @@ import json
 import requests
 import io
 import base64
+import re
 from PIL import Image as pillow
 
 # 定义全局变量
@@ -73,10 +74,13 @@ class astrbot_plugin_for_sd_webui(Star):
         negtive_prompt = sub_config.get('negtive_prompt', 'nsfw')
 
     @filter.command("draw")
-    async def draw(self, event: AstrMessageEvent, message: str):
+    async def draw(self, event: AstrMessageEvent):
         '''这是 /draw 指令'''
         global url, model_name, step, sampler, height, width, CLIP, seed, prompt, negtive_prompt
-        prompt = message  # 使用传入的消息作为提示词
+        for item in event.message_obj.message:
+            if isinstance(item, Plain):
+                result = re.sub(r'\b/draw\b', '', item.text)
+                prompt =  result # 使用传入的消息作为提示词
 
         text2image(url, model_name, step, sampler, height, width, CLIP, seed, prompt, negtive_prompt)
 

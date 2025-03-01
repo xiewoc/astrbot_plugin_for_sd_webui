@@ -50,7 +50,7 @@ def text2image(url, model_name, step, sampler, height, width, CLIP, seed, prompt
     image = pillow.open(io.BytesIO(base64.b64decode(r['images'][0])))
     image.save(os.path.join(os.path.dirname(os.path.abspath(__file__)),'output.png'))
 
-@register("astrbot_plugin_for_sd_webui", "xiewoc ", "extention in astrbot for stable diffusion webui(api)", "1.0.0", "https://github.com/xiewoc/astrbot_plugin_for_sd_webui")
+@register("astrbot_plugin_for_sd_webui", "xiewoc ", "extention in astrbot for stable diffusion webui(api)", "1.0.1", "https://github.com/xiewoc/astrbot_plugin_for_sd_webui")
 class astrbot_plugin_for_sd_webui(Star):
     def __init__(self, context: Context, config: dict):
         super().__init__(context)

@@ -50,7 +50,7 @@ def text2image(url, model_name, step, sampler, height, width, CLIP, seed, prompt
     image = pillow.open(io.BytesIO(base64.b64decode(r['images'][0])))
     image.save(os.path.join(os.path.dirname(os.path.abspath(__file__)),'output.png'))
 
-@register("astrbot_plugin_for_sd_webui", "xiewoc ", "extention in astrbot for stable diffusion webui(api)", "1.0.1", "https://github.com/xiewoc/astrbot_plugin_for_sd_webui")
+@register("astrbot_plugin_for_sd_webui", "xiewoc ", "extention in astrbot for stable diffusion webui(api)", "1.0.2", "https://github.com/xiewoc/astrbot_plugin_for_sd_webui")
 class astrbot_plugin_for_sd_webui(Star):
     def __init__(self, context: Context, config: dict):
         super().__init__(context)
@@ -87,6 +87,22 @@ class astrbot_plugin_for_sd_webui(Star):
         chain = [
             At(qq=event.get_sender_id()),  # At 消息发送者
             Plain("你要的图："),
+            Image.fromFileSystem(os.path.join(os.path.dirname(os.path.abspath(__file__)),'output.png')),  # 从本地文件目录发送图片
+        ]
+        yield event.chain_result(chain)
+
+    @llm_tool(name="draw_pic") # func_call
+    async def draw_pic(self, event: AstrMessageEvent, prompt: str) -> MessageEventResult:
+        '''绘图（需要英文提示词）
+
+        Args:
+            prompt(string): 正向提示词（英文）
+        '''
+        
+        global model_name, step, sampler, height, width, CLIP, seed, negtive_prompt
+        text2image(url, model_name, step, sampler, height, width, CLIP, seed, prompt, negtive_prompt)
+
+        chain = [
             Image.fromFileSystem(os.path.join(os.path.dirname(os.path.abspath(__file__)),'output.png')),  # 从本地文件目录发送图片
         ]
         yield event.chain_result(chain)
